@@ -16,6 +16,7 @@ RUN apt-get -y install oracle-java7-installer
 
 # Install tomcat
 RUN apt-get -y install tomcat7
+RUN apt-get install libtomcat7-java 
 RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/default/tomcat7
 EXPOSE 8080
 
