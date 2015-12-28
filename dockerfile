@@ -1,4 +1,4 @@
-FROM rojash01/docker-test
+FROM debian
 
 # Update Ubuntu
 RUN apt-get update && apt-get -y upgrade
