@@ -7,7 +7,7 @@ machine:
 dependencies:
   override:
     - docker info
-    - docker build -t rojash01/docker-test
+    - docker build -t rojash01/docker-test .
 
 deployment:
   hub:
