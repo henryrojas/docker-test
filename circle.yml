@@ -7,11 +7,11 @@ machine:
 dependencies:
   override:
     - docker info
-    - cd tomcat
-    - docker build -t rojash01/tomcat .
+    - cd tomcat/
+    - docker build -t tomcat .
     - cd ..
-    - cd JavaApp
-    - docker build -t rojash01/sampleapp .
+    - cd JavaApp/
+    - docker build -t sampleapp .
 
 deployment:
   hub:
