@@ -5,10 +5,11 @@ machine:
     - docker
 
 dependencies:
+  pre:
+    - ./gradlew build
   override:
     - docker info
-    - docker build -t tomcat tomcat/
-    - docker build -t sampleapp JavaApp/
+    - docker build -t docker-test .
 
 deployment:
   hub:
@@ -16,3 +17,5 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push rojash01/docker-test
+      - aws ecs register-task-definition --cli-input-json file://task.json --region eu-west-1
+      - aws ecs run-task --task-definition docker-test-family2:1 --count 1 --region eu-west-1

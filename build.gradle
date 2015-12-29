@@ -1,0 +1,39 @@
+plugins {
+    id 'war'
+    id 'java'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.5"
+}
+
+repositories {
+  mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+project.ext {
+    awsSdkVersion = "1.10.16"
+    springFrameworkVersion = "4.2.1.RELEASE"
+    camelVersion = "2.15.3"
+}
+
+dependencies {
+    compile "org.springframework:spring-context:${springFrameworkVersion}"
+    compile "org.springframework:spring-webmvc:${springFrameworkVersion}"
+    compile "com.amazonaws:aws-java-sdk-sns:${awsSdkVersion}"
+    compile "com.amazonaws:aws-java-sdk-s3:${awsSdkVersion}"
+    compile "com.amazonaws:aws-java-sdk-dynamodb:${awsSdkVersion}"
+    compile "org.apache.camel:camel-core:${camelVersion}"
+    compile "org.apache.camel:camel-spring-javaconfig:${camelVersion}"
+    compile("org.apache.camel:camel-aws:${camelVersion}") {
+        exclude group: "com.amazonaws"
+    }
+
+    testCompile "org.apache.camel:camel-test:${camelVersion}"
+    testCompile "org.mockito:mockito-core:1.10.19"
+    testCompile "junit:junit:4.12"
+    testCompile "org.springframework:spring-test:${springFrameworkVersion}"
+}

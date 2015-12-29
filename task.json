@@ -1,0 +1,12 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "docker-test3",
+      "image": "rojash01/docker-test",
+      "cpu": 384,
+      "memory": 384,
+      "essential": true
+    }
+  ],
+  "family": "docker-test-family2"
+}
